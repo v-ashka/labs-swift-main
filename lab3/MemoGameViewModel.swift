@@ -10,6 +10,7 @@
 import Foundation
 import SwiftUI      
 
+// Obserwowana klasa
 class MemoGameViewModel: ObservableObject{
     static let emojisThemeFirst = ["😄", "😅", "🤒", "😱", "😡", "🤩", "👽"]
     static let emojisThemeSecond = ["🐵", "🐶", "🐹", "🐮","🐦", "🐣", "🦎"]
@@ -38,6 +39,7 @@ class MemoGameViewModel: ObservableObject{
           model.shuffle()
       }
       
+//    W przypadku zmiany, dochodzi do powiadomienia
       @Published private var model = MemoGameViewModel.createMemoGame(1)
       
     

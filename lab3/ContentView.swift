@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+//    obserwowanie obiektu, bo moze sie zmienic
     @ObservedObject var viewModel: MemoGameViewModel
     
     var body: some View {
