@@ -13,10 +13,11 @@ struct ThemeButton: View {
     var imageName: String
     var content: String
     var ownColor: Color
-    var emojis: [String]
+//    var emojis: [String]
+    var themeNum: Int
     var body: some View{
         Button(action: {
-            viewModel.changeApplicationTheme(color: ownColor, newEmojis: emojis)
+            viewModel.changeApplicationTheme(color: ownColor, themeNum: themeNum )
             
         }, label: {
             VStack{

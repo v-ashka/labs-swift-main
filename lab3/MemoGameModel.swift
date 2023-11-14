@@ -11,12 +11,9 @@ import Foundation
 
 struct MemoGameModel<CardContent> where CardContent: Equatable{
     private(set) var cards: Array<Card>
-    private var emojiArr: [CardContent]
 
     
-    
-    init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent, emojiArr: [CardContent]) {
-        self.emojiArr = emojiArr // Inicjalizujemy tablicę emojis
+    init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
          cards = []
         // dodaj kart parami numberPairsOfCard = 2
         for pairIndex in 0..<max(2, numberOfPairsOfCards){
@@ -28,7 +25,6 @@ struct MemoGameModel<CardContent> where CardContent: Equatable{
     
     
     mutating func choose(_ card: Card) {
-//        print("Choose \(card)")
                 let chosenIndex = index(of: card)
                 cards[chosenIndex].isFaceUp.toggle()
         
@@ -46,18 +42,6 @@ struct MemoGameModel<CardContent> where CardContent: Equatable{
     mutating func shuffle(){
         cards.shuffle()
     }
-    
-    mutating func rebuildTheme(newEmojis: [CardContent], numberOfPairsOfCards: Int) {
-            emojiArr = newEmojis // Aktualizujemy tablicę emojis
-            cards = [] // Usuwamy obecne karty
-
-            // Dodaj nowe karty zgodnie z nową tablicą emojis
-        for pairIndex in 0..<max(2, emojiArr.count) {
-                let content = emojiArr[pairIndex]
-                cards.append(Card(content: content, id: "\(pairIndex+1)a"))
-                cards.append(Card(content: content, id: "\(pairIndex+1)b"))
-            }
-        }
 
     
     struct Card: Equatable, Identifiable{

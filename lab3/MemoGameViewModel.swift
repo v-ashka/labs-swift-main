@@ -11,23 +11,26 @@ import Foundation
 import SwiftUI      
 
 class MemoGameViewModel: ObservableObject{
-    public static var emojis = [""]
     static let emojisThemeFirst = ["😄", "😅", "🤒", "😱", "😡", "🤩", "👽"]
+    static let emojisThemeSecond = ["🐵", "🐶", "🐹", "🐮","🐦", "🐣", "🦎"]
+    static let emojisThemeThird = ["🍎", "🧅", "🍕", "🍔", "🥕", "🧀", "🍅"]
+    var themeColor = Color.blue
     
-//    static let emojisThemeSecond = ["🐵", "🐶", "🐹", "🐮","🐦", "🐣", "🦎"]
-//    
-//    static let emojisThemeThird = ["🍎", "🧅", "🍕", "🍔", "🥕", "🧀", "🍅"]
+    private static var themes = [1: (4, emojisThemeFirst),
+                                   2: (6, emojisThemeSecond),
+                                   3: (8, emojisThemeThird)]
         
-    private static func createMemoGame() -> MemoGameModel<String> {
-        emojis = emojisThemeFirst
+    private static func createMemoGame(_ theme: Int) -> MemoGameModel<String> {
+        let count = themes[theme]!.0
+        let emojis = themes[theme]!.1
           return MemoGameModel<String>(
-            numberOfPairsOfCards: 10, cardContentFactory: {
+            numberOfPairsOfCards: count, cardContentFactory: {
               index in
               if emojis.indices.contains(index) {
                   return emojis[index]
               }
               return "??"
-            }, emojiArr: emojis)
+            })
           
       }
       
@@ -35,7 +38,7 @@ class MemoGameViewModel: ObservableObject{
           model.shuffle()
       }
       
-      @Published private var model = MemoGameViewModel.createMemoGame()
+      @Published private var model = MemoGameViewModel.createMemoGame(1)
       
     
       var cards: Array<MemoGameModel<String>.Card>{
@@ -46,27 +49,11 @@ class MemoGameViewModel: ObservableObject{
           model.choose(card)
       }
     
-    var themeColor = Color.blue
+   
     
-    func changeApplicationTheme(color: Color, newEmojis: [String]){
+    func changeApplicationTheme(color: Color, themeNum: Int){
         themeColor = color
-        let pairNum = Int.random(in:4...10)
-        model.rebuildTheme(newEmojis: newEmojis, numberOfPairsOfCards: pairNum)
-//        return MemoGameModel<String>(
-//            numberOfPairsOfCards: 10, cardContentFactory: {
-//            index in
-//            if newEmojis.indices.contains(index) {
-//                return newEmojis[index]
-//            }
-//            return "??"
-//          }, emojiArr: newEmojis)
-        
-//        model.cards = ["D", "F", "G", "C", "D"]
-    }
-    
-    func changeCardTheme(_ card: MemoGameModel<String>.Card){
-            
-        
+        model = MemoGameViewModel.createMemoGame(themeNum)
     }
     
 }
