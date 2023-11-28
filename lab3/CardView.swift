@@ -20,7 +20,6 @@ struct CardView: View {
         self.card = card
     }
     var body: some View{
-      
                 CirclePart(endAngle: .degrees(240))
                     .overlay(
                         Text(card.content)
