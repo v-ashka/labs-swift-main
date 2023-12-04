@@ -7,25 +7,35 @@
 
 import SwiftUI
 
-struct TransformIntoCard: ViewModifier {
-    let isFaceUp: Bool
+struct TransformIntoCard: ViewModifier, Animatable {
+    init(isFaceUp: Bool){
+        rotation = isFaceUp ? 0 : 180
+    }
+    
+    var isFaceUp: Bool {
+        rotation < 90
+    }
     let isMatched: Bool
+    
+    var rotation: Double
+    
+    var animatableData: Double {
+        get{ rotation}
+        set {rotation = newValue}
+    }
+    
     func body(content: Content) -> some View {
         ZStack{
             let base = RoundedRectangle(cornerRadius: constans.cornerRadius)
-            Group{
-                    base.fill(Color.white)
                 base.strokeBorder(lineWidth: constans.lineWidth)
-                    content  
-                    .rotationEffect(isMatched ? constans.rotateDeg : Angle(degrees: 0))
-                    .animation(isMatched ? .easeInOut(duration: constans.animationDur) : .smooth)
-                
-                }
-                .opacity(isFaceUp ? 1 : 0)
+                    .background(base.fill(.white))
+                    .overlay(content)
+                    .opacity(isFaceUp ? 1 : 0)
             base.fill()
                 .opacity(isFaceUp ? 0 :1)
               
         }
+        .rotation3DEffect(.degrees(rotation), axis: (0,1,0))
     }
     
     private struct constans{

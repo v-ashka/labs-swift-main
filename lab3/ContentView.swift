@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
 //    obserwowanie obiektu, bo moze sie zmienic
     @ObservedObject var viewModel: MemoGameViewModel
-    
+    typealias Card = MemoGameModel<String>.Card
     var body: some View {
         VStack{
             ScrollView{
@@ -51,13 +51,28 @@ struct ContentView: View {
                 CardView(card)
                     .aspectRatio(2/3, contentMode: .fit)
                     .padding(4)
+                    .overlay(FlyingNumber(number: scoreChange(causedBy: card)))
+                    .zIndex(scoreChange(causedBy: card) != 0 ? 1 : 0)
                     .onTapGesture {
-                        elems.choose(card)
+                        withAnimation(.easeInOut(duration: 2)){
+                            let scoreBeforeChoosing = elems.points
+                            elems.choose(card)
+                            let scoreChange = elems.points - scoreBeforeChoosing
+                            lastScoreChange = (scoreChange, causedByCardId: card.id)
+                        }
                     }
             }
         }
         .foregroundColor(viewModel.themeColor)
         
+    }
+    
+    @State private var lastScoreChange: (amount: Int, causedByCardId: Card.ID) = (amount: 0, causedByCardId: "")
+    
+    private func scoreChange(causedBy card: Card) -> Int {
+        let (amount, id) = lastScoreChange
+        return card.id == id ? amount : 0
+//        return lastScoreChange.1 == card.id ? lastScoreChange.0 : 0
     }
     
 }

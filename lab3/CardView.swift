@@ -26,6 +26,8 @@ struct CardView: View {
                         .font(.system(size: 200))
                        .minimumScaleFactor(0.01)
                        .aspectRatio(1/1, contentMode: .fit)
+                            .rotationEffect(.degrees(card.isMatched ? 360 : 0))
+                            .animation(.spin(duration: 1), value: card.isMatched)
                     ).modifier(TransformIntoCard(isFaceUp: card.isFaceUp, isMatched: card.isMatched))
                     .opacity(card.isFaceUp || !card.isMatched ? 1 : 0)
                     
@@ -38,6 +40,12 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View{
         CardView(MemoGameModel<String>.Card.init(content: "", id: ""))
+    }
+}
+
+extension Animation {
+    static func spin(duration: TimeInterval) -> Animation {
+        .linear(duration: 1).repeatForever(autoreverse: false)
     }
 }
 

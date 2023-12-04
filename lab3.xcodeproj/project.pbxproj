@@ -10,6 +10,7 @@
 		3F19FA092AFA8E0C00B171D1 /* MemoGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F19FA082AFA8E0C00B171D1 /* MemoGameModel.swift */; };
 		3F19FA0B2AFA8E2500B171D1 /* MemoGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F19FA0A2AFA8E2500B171D1 /* MemoGameViewModel.swift */; };
 		3F5D273F2ADED3E300861732 /* ButtonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D273E2ADED3E300861732 /* ButtonTheme.swift */; };
+		7E39358D2B1E5C97003D784A /* FlyingNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39358C2B1E5C97003D784A /* FlyingNumber.swift */; };
 		7E705D992B16254100478B69 /* CirclePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E705D982B16254100478B69 /* CirclePath.swift */; };
 		7E705D9E2B162AAF00478B69 /* TransformIntoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E705D9D2B162AAF00478B69 /* TransformIntoCard.swift */; };
 		7E888DE02B023DF8005ED03F /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E888DDF2B023DF8005ED03F /* ThemeButton.swift */; };
@@ -43,6 +44,7 @@
 		3F19FA082AFA8E0C00B171D1 /* MemoGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameModel.swift; sourceTree = "<group>"; };
 		3F19FA0A2AFA8E2500B171D1 /* MemoGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoGameViewModel.swift; sourceTree = "<group>"; };
 		3F5D273E2ADED3E300861732 /* ButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTheme.swift; sourceTree = "<group>"; };
+		7E39358C2B1E5C97003D784A /* FlyingNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyingNumber.swift; sourceTree = "<group>"; };
 		7E705D982B16254100478B69 /* CirclePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclePath.swift; sourceTree = "<group>"; };
 		7E705D9D2B162AAF00478B69 /* TransformIntoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformIntoCard.swift; sourceTree = "<group>"; };
 		7E888DDF2B023DF8005ED03F /* ThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				7E888DDF2B023DF8005ED03F /* ThemeButton.swift */,
 				7E705D982B16254100478B69 /* CirclePath.swift */,
 				7E705D9D2B162AAF00478B69 /* TransformIntoCard.swift */,
+				7E39358C2B1E5C97003D784A /* FlyingNumber.swift */,
 			);
 			path = lab3;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				7EB0CC2C2ADD9BC40061A8FD /* lab3App.swift in Sources */,
 				7E888DE02B023DF8005ED03F /* ThemeButton.swift in Sources */,
 				3F5D273F2ADED3E300861732 /* ButtonTheme.swift in Sources */,
+				7E39358D2B1E5C97003D784A /* FlyingNumber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
